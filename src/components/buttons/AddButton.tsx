@@ -13,7 +13,7 @@ function AddButton() {
 
     return(
         <FormErrorBoundary>
-            <IconButton color="success" onClick={handleOpen}>
+            <IconButton color="success" onClick={handleOpen} sx={{width: 40, height: 40}}>
                 <AddIcon />
             </IconButton>
 

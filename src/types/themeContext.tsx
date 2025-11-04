@@ -1,4 +1,4 @@
-import {createContext, useState, type Context, type PropsWithChildren} from 'react';
+import {createContext, useState, type Context, type PropsWithChildren, useMemo} from 'react';
 import type  { ThemeContextType, ThemeType } from './contextTypes';
 
 export const ThemeContext: Context<ThemeContextType> = createContext<ThemeContextType>({
@@ -8,9 +8,10 @@ export const ThemeContext: Context<ThemeContextType> = createContext<ThemeContex
 
 export function ThemeProvider({ children }: PropsWithChildren<{}>) {
     const [theme, setTheme] = useState<ThemeType>('light');
+    const value = useMemo(() => ({ theme, setTheme }), [theme]);
 
     return (
-        <ThemeContext.Provider value={{ theme, setTheme }}>
+        <ThemeContext.Provider value={value}>
             {children}
         </ThemeContext.Provider>
     );
